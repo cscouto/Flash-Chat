@@ -7,110 +7,43 @@
 //
 
 import UIKit
-
+import Firebase
 
 class ChatViewController: UIViewController {
-    
-    // Declare instance variables here
 
-    
-    // We've pre-linked the IBOutlets
+    //outlets
     @IBOutlet var heightConstraint: NSLayoutConstraint!
     @IBOutlet var sendButton: UIButton!
     @IBOutlet var messageTextfield: UITextField!
     @IBOutlet var messageTableView: UITableView!
     
-    
-    
+    //system functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //TODO: Set yourself as the delegate and datasource here:
-        
-        
-        
-        //TODO: Set yourself as the delegate of the text field here:
-
-        
-        
-        //TODO: Set the tapGesture here:
-        
-        
-
-        //TODO: Register your MessageCell.xib file here:
-
-        
+        messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell")
     }
-
-    ///////////////////////////////////////////
     
-    //MARK: - TableView DataSource Methods
-    
-    
-    
-    //TODO: Declare cellForRowAtIndexPath here:
-    
-    
-    
-    //TODO: Declare numberOfRowsInSection here:
-    
-    
-    
-    //TODO: Declare tableViewTapped here:
-    
-    
-    
-    //TODO: Declare configureTableView here:
-    
-    
-    
-    ///////////////////////////////////////////
-    
-    //MARK:- TextField Delegate Methods
-    
-    
-
-    
-    //TODO: Declare textFieldDidBeginEditing here:
-    
-    
-    
-    
-    //TODO: Declare textFieldDidEndEditing here:
-    
-
-    
-    ///////////////////////////////////////////
-    
-    
-    //MARK: - Send & Recieve from Firebase
-    
-    
-    
-    
-    
+    //actions
     @IBAction func sendPressed(_ sender: AnyObject) {
-        
-        
-        //TODO: Send the message to Firebase and save it in our database
-        
-        
-    }
-    
-    //TODO: Create the retrieveMessages method here:
-    
-    
 
-    
-    
-    
+    }
     @IBAction func logOutPressed(_ sender: AnyObject) {
-        
-        //TODO: Log out the user and send them back to WelcomeViewController
-        
-        
+        do {
+            try Auth.auth().signOut()
+            self.navigationController?.popToRootViewController(animated: true)
+        }catch{}
     }
-    
+}
 
-
+extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customMessagecell", for: indexPath) as! CustomMessageCell
+        return cell
+    }
 }
