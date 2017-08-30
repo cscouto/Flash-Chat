@@ -262,6 +262,9 @@
                                         <rect key="frame" x="8" y="10" width="305" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="send"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="vXZ-lx-hvc" id="5iU-tY-5Wf"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JiI-fB-I1v">
                                         <rect key="frame" x="321" y="10" width="46" height="30"/>
