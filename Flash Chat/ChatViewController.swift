@@ -23,11 +23,12 @@ class ChatViewController: UIViewController {
     //system functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell")
+        messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "MessageCell")
         messageTableView.estimatedRowHeight = 120.0
         messageTableView.rowHeight = UITableViewAutomaticDimension
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tableviewTapped))
         messageTableView.addGestureRecognizer(tapGesture)
+        retrieveMessages()
     }
     
     //actions
@@ -86,7 +87,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         return messages.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "customMessagecell", for: indexPath) as! CustomMessageCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MessageCell
         cell.messageBody.text = messages[indexPath.row].message
         cell.senderUsername.text = messages[indexPath.row].sender
         cell.avatarImageView.image = UIImage(named: "egg")
