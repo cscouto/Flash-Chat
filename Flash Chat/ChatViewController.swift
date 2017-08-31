@@ -25,6 +25,7 @@ class ChatViewController: UIViewController {
         super.viewDidLoad()
         messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "MessageCell")
         messageTableView.estimatedRowHeight = 120.0
+        messageTableView.separatorStyle = .none
         messageTableView.rowHeight = UITableViewAutomaticDimension
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tableviewTapped))
         messageTableView.addGestureRecognizer(tapGesture)
