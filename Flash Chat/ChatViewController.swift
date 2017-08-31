@@ -76,6 +76,8 @@ class ChatViewController: UIViewController {
             message.sender = snap["Sender"]!
             self.messages.append(message)
             self.messageTableView.reloadData()
+            let lastIndex = IndexPath(row: self.messages.count - 1, section: 0)
+            self.messageTableView.scrollToRow(at: lastIndex, at: UITableViewScrollPosition.bottom, animated: true)
         })
     }
 }
